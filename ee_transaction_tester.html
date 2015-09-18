@@ -1,0 +1,237 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Google Tag Manager Kitchen Sink</title>
+    <link rel="stylesheet" href="css/foundation.css"/>
+    <script src="js/vendor/modernizr.js"></script>
+</head>
+<body>
+
+<script>
+    dataLayer = [];
+</script>
+<!-- Google Tag Manager -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MQMNVX"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<script>(function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(), event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+            '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-MQMNVX');</script>
+<!-- End Google Tag Manager -->
+
+
+<div class="row">
+    <div class="large-12 columns">
+        <h1>Google Tag Manager Transaction Testing  </h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-12 columns">
+        <h2> Google Code</h2>
+
+        <h3> Test 1: Enhanced Ecommerce Buttons using Google's documentation </h3>
+        <p> Use this to test if your Google analytics and tag manager is correctly setup to accept purchase transactions.</p>
+        <a class="large-12,medium-12">Link to : <a href="https://developers.google.com/tag-manager/enhanced-ecommerce">
+            google Tag manager Documentatation for EE</a>
+
+            <div>
+            <class="large-12,medium-12">
+                <a href="#" class="medium success button" onclick="
+            dataLayer.push({'event':'purchase',
+  'ecommerce': {
+    'purchase': {
+      'actionField': {
+        'id': 'T12346',                         // Transaction ID. Required for purchases and refunds.
+        'affiliation': 'Online Store',
+        'revenue': '35.43',                     // Total transaction value (incl. tax and shipping)
+        'tax':'4.90',
+        'shipping': '5.99',
+        'coupon': 'SUMMER_SALE'
+      },
+      'products': [{                            // List of productFieldObjects.
+        'name': 'Triblend Android T-Shirt',     // Name or ID is required.
+        'id': '12345',
+        'price': '15.25',
+        'brand': 'Google',
+        'category': 'Apparel',
+        'variant': 'Gray',
+        'quantity': 1,
+        'coupon': ''                            // Optional fields may be omitted or set to empty string.
+       },
+       {
+        'name': 'Donut Friday Scented T-Shirt',
+        'id': '67890',
+        'price': '33.75',
+        'brand': 'Google',
+        'category': 'Apparel',
+        'variant': 'Black',
+        'quantity': 1
+       }]
+    }
+  }
+});">
+                    Sample Purchase Transaction using Google's Test documentation code </a><br/>
+
+            </div>
+
+            <div class="large-6,medium-6">
+
+                <p> Then you can use either of the following two methods: </p>
+                <a href="#" class="medium success button" onclick="dataLayer.push({'event':'refund',
+  'ecommerce': {
+    'refund': {
+      'actionField': {'id': 'T12346'},        // Transaction ID.
+      'products': [
+            {'id': '12345', 'quantity': 1},   // Product ID and quantity. Required for partial refunds.
+            {'id': '67890','quantity': 1}
+       ]
+     }
+  }
+});"> Refund Transaction using Google's Test documentation code ( Using Code that does each product seperately) </a><br/>
+            </div>
+
+            <div class="large-6,medium-6">
+                <p> or you can use ... </p>
+                <a href="#" class="medium success button" onclick="dataLayer.push({'event':'refund',
+        'ecommerce': {
+        'refund': {
+        'actionField': {'id': 'T12346'}         // Transaction ID. Required for purchases and refunds.
+        }
+        }
+        });"> Refund Google Test whole transaction not product by product</a><br/>
+            </div>
+
+<br>
+            <br>
+
+            <h2>Test 2:  Sample Code for project using Magento single currency implementation - this code is working ( using USD)  </h2>
+
+            <a class="large-12,medium-12">Link to <a
+                    href="https://developers.google.com/tag-manager/enhanced-ecommerce"> google Tag manager
+                Documentatation for EE</a>
+
+                <div class="large-12,medium-12">
+
+                    <a href="#" class="medium success button" onclick="
+            dataLayer.push({'event':'purchase',
+  'ecommerce': {
+    'purchase': {
+      'actionField': {
+        'id': '1023231231',                         // Transaction ID. Required for purchases and refunds.
+        'revenue': '1741.67',                     // Total transaction value (incl. tax and shipping)
+        'tax':'349.5000',
+        'shipping': '5.8300',
+        'coupon': ''
+      },
+      'products': [{                            // List of productFieldObjects.
+        'name': 'Little Black Dress',     // Name or ID is required.
+        'id': 'DRESS 511 black 18',
+        'price': '1375.0000',
+        'quantity': 1,
+        'coupon': ''                            // Optional fields may be omitted or set to empty string.
+       },
+       {
+        'name': 'Feather Boa Red and Pink',
+        'id': 'BOA 511 REDPINK OS',
+        'price': '366.6700',
+        'quantity': 1
+       }]
+    }
+  }
+});">
+
+                        Sample code for Magento to use for refund - Working!</a><br/>
+                </div>
+
+                <div class="large-12,medium-12">
+                    <a href="#" class="medium success button" onclick="dataLayer.push({'event':'refund',
+  'ecommerce': {
+    'refund': {
+      'actionField': {'id': '1023231231'},        // Transaction ID.
+      'products': [
+            {'id': 'DRESS 511 black 18', 'quantity': 1},   // Product ID and quantity. Required for partial refunds.
+            {'id': 'BOA 511 REDPINK OS','quantity': 1}
+       ]
+     }
+  }
+});"> Sample Refund Code for Magento Backend  using partial refund code format </a><br/>
+                </div>
+
+
+                <!---- NEW TEST -->
+                <h2> Test 3:Sample code <--- Use this for  EE Buttons based on magento's requirements using multi-currency( Using EUR in USD Store  values)</h2>
+                <a class="large-12,medium-12">Link to <a
+                        href="https://developers.google.com/tag-manager/enhanced-ecommerce"> google Tag manager
+                    Documentatation for EE</a>
+
+                    <div class="large-12,medium-12">
+
+                        <a href="#" class="medium success button" onclick="
+            dataLayer.push({'event':'purchase',
+  'ecommerce': {
+  'currencyCode': 'EUR',
+    'purchase': {
+      'actionField': {
+        'id': '123456789',                         // Transaction ID. Required for purchases and refunds.
+        'revenue': '1741.67',                     // Total transaction value (incl. tax and shipping)
+        'tax':'349.5000',
+        'shipping': '5.8300',
+        'coupon': ''
+      },
+      'products': [{                            // List of productFieldObjects.
+        'name': 'Little Black Dress',     // Name or ID is required.
+        'id': 'DRESS 411 black 18',
+        'price': '1377.0000',
+        'quantity': 1,
+        'coupon': ''                            // Optional fields may be omitted or set to empty string.
+       },
+       {
+        'name': 'BodyCon Wraparound Long Tee',
+        'id': 'TSHRT 511 black Long ONE',
+        'price': '366.6700',
+        'quantity': 1
+       }]
+    }
+  }
+});">
+
+                            Test Order  Ecommerce Sale Magento Multi-currency working! </a>
+
+                        <br/>
+                    </div>
+
+                    <div class="large-12,medium-12">
+                        <a href="#" class="medium success button" onclick="dataLayer.push({'event':'refund',
+  'ecommerce': {
+  'currencyCode': 'EUR',
+    'refund': {
+      'actionField': {'id': '123456789'},        // Transaction ID.
+      'products': [
+            {'id': 'DRESS 411 black 18', 'quantity': 1},   // Product ID and quantity. Required for partial refunds.
+            {'id': 'TSHRT 511 black Long ONE','quantity': 1}
+       ]
+     }
+  }
+});"> Refund Test Order (  Magento Multi-currency) working! </a><br/>
+                    </div>
+
+
+                    <script src="js/vendor/jquery.js"></script>
+                <script src="js/foundation.min.js"></script>
+                <script>
+                    $(document).foundation();
+                </script>
+</body>
+</html>
