@@ -1,4 +1,4 @@
-*This Folder contains the sameple Code from:
+*This Folder contains the sample Code from:
 
 https://developers.google.com/tag-manager/enhanced-ecommerce
 
