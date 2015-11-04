@@ -1,0 +1,17 @@
+<script>
+// A custom JavaScript macro that returns an ecommerceData object
+// that follows the data layer syntax.
+function() {
+  var ecommerceData = {
+    'ecommerce': {
+      'purchase': {
+        'actionField': {'id': 'T12345'},
+        'products': [
+            // List of productFieldObjects
+        ],
+        ... // Rest of the code should follow the data layer syntax.
+     }
+  };
+  return ecommerceData;
+}
+</script>
