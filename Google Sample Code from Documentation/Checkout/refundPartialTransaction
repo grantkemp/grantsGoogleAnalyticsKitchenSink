@@ -1,0 +1,16 @@
+<script>
+// Measure a partial refund by providing an array of productFieldObjects and specifying the ID and
+// quantity of each product being returned. This example assumes the partial refund details are
+// known at the time the page loads:
+dataLayer.push({
+  'ecommerce': {
+    'refund': {
+      'actionField': {'id': 'T12345'},        // Transaction ID.
+      'products': [
+            {'id': 'P4567', 'quantity': 1},   // Product ID and quantity. Required for partial refunds.
+            {'id': 'P8901','quantity': 2}
+       ]
+     }
+  }
+});
+</script>
