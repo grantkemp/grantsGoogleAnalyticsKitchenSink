@@ -11,3 +11,8 @@ https://developers.google.com/tag-manager/enhanced-ecommerce
 
 #Feedback/ Suggestions
 Please raise issues in Github
+
+#Todo
+1. Write guide on how to use
+2. Add Sample Pages with Analytics tracking for template use
+
