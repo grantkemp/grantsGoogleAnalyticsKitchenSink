@@ -13,6 +13,6 @@ https://developers.google.com/tag-manager/enhanced-ecommerce
 Please raise issues in Github
 
 #Todo
-1. Write guide on how to use
+1. Write guide on how to use in Constants/HowToSetupThisToWork.html
 2. Add Sample Pages with Analytics tracking for template use
 
